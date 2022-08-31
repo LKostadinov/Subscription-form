@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Subscription</title>
+  </head>
+  <body>
+    <div class="center">
+      <button class="button">Subscribe now</button>
+    </div>
+    <div class="modal">
+      <div class="modal-flex">
+        <div class="image">
+          <img class="suit" src="./img/suit.jpg" alt="" />
+        </div>
+        <form class="form">
+          <div class="input-wrapper">
+            <h3>Your names:</h3>
+            <input type="text" name="names" maxlength="30" />
+          </div>
+          <h3>Phone No:</h3>
+          <input type="text" name="phone" maxlength="12" />
+          <h3>Email address:</h3>
+          <input type="email" name="email" maxlength="40" />
+          <p class="error-message" style="color: rgb(228, 67, 67)"></p>
+          <button class="subscribe" type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <img class="x" src="./img/x.jpg" alt="cross" />
+
+      <div class="subscription-window">
+        <p class="subscription-message">
+          Thank you! You've successfully subscribed for our newsletters! You are
+          now one of the first to know about our new products, sales and
+          giveaways.
+        </p>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
