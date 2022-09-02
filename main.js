@@ -2,7 +2,7 @@
 
 const x = document.querySelector(".x");
 
-function openModal() {
+function toggleModal() {
   const button = document.querySelector(".button");
   const modal = document.querySelector(".modal");
 
@@ -15,23 +15,7 @@ function openModal() {
   });
 }
 
-openModal();
-
-function subscribed() {
-  const subscribeBtn = document.querySelector(".subscribe");
-  const content = document.querySelector(".modal-flex");
-  const message = document.querySelector(".subscription-window");
-
-  subscribeBtn.addEventListener("click", function () {
-    content.remove();
-    subscribeBtn.remove();
-    message.classList.add("open");
-    x.style.top = "-5%";
-    x.style.left = "97%";
-  });
-}
-
-// subscribed();
+toggleModal();
 
 function submitForm() {
   const form = document.querySelector(".form");
@@ -47,7 +31,9 @@ function submitForm() {
     const inputs = this.querySelectorAll("input");
     const stringRegex = /^[a-zA-Z ]{2,30}$/;
     const numberRegex = /^[0-9]{12}$/;
-    const emailRegex = /./;
+    const emailRegex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     hideMessage();
 
     function showMessage(msg) {
@@ -61,32 +47,32 @@ function submitForm() {
     }
 
     if (!names.trim()) {
-      showMessage("'Your names' field is empty!");
-    } else {
-      if (!stringRegex.test(names)) {
-        showMessage("'Your names' field must contain only letters!");
-      } else {
-        if (!phone.trim()) {
-          showMessage("'Phone No' field is empty!");
-        } else {
-          if (!numberRegex.test(phone)) {
-            showMessage("'Phone No' field should contain 12 digits!");
-          } else {
-            if (!email.trim()) {
-              showMessage("'Email address' field is empty!");
-            } else {
-              if (!emailRegex.test(email)) {
-                showMessage("Invalid email address!");
-              } else {
-                successMessage.classList.add("open");
-                inputs.forEach((input) => (input.value = ""));
-                setTimeout(() => successMessage.classList.remove("open"), 3000);
-              }
-            }
-          }
-        }
-      }
+      return showMessage("'Your names' field is empty!");
     }
+
+    if (!stringRegex.test(names)) {
+      return showMessage("'Your names' field must contain only letters!");
+    }
+
+    if (!phone.trim()) {
+      return showMessage("'Phone No' field is empty!");
+    }
+
+    if (!numberRegex.test(phone)) {
+      return showMessage("'Phone No' field should contain 12 digits!");
+    }
+
+    if (!email.trim()) {
+      return showMessage("'Email address' field is empty!");
+    }
+
+    if (!emailRegex.test(email)) {
+      return showMessage("Invalid email address!");
+    }
+
+    successMessage.classList.add("open");
+    inputs.forEach((input) => (input.value = ""));
+    setTimeout(() => successMessage.classList.remove("open"), 4500);
   });
 }
 
